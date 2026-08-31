@@ -1,17 +1,22 @@
+// ============================================================
+// Afraim Murshed | Portfolio
+// ============================================================
+
 document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initScrollReveal();
-  initActiveNav();
+  initActiveNavLink();
   initSmoothScroll();
   initContactForm();
   initFooterYear();
 });
 
 
-/* MOBILE NAVIGATION */
+// ------------------------------------------------------------
+// Mobile navigation
+// ------------------------------------------------------------
 
 function initMobileNav() {
-
   const toggle = document.getElementById("nav-toggle");
   const links = document.getElementById("nav-links");
   const scrim = document.getElementById("nav-scrim");
@@ -19,28 +24,23 @@ function initMobileNav() {
   if (!toggle || !links || !scrim) return;
 
   const closeNav = () => {
-
     toggle.setAttribute("aria-expanded", "false");
-
     links.classList.remove("is-open");
-
     scrim.classList.remove("is-open");
 
-    document.body.style.overflow = "";
+    document.body.classList.remove("nav-open");
   };
 
   const openNav = () => {
-
     toggle.setAttribute("aria-expanded", "true");
-
     links.classList.add("is-open");
-
     scrim.classList.add("is-open");
 
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("nav-open");
   };
 
-  toggle.addEventListener("click", () => {
+  toggle.addEventListener("click", (event) => {
+    event.preventDefault();
 
     const isOpen =
       toggle.getAttribute("aria-expanded") === "true";
@@ -50,49 +50,112 @@ function initMobileNav() {
     } else {
       openNav();
     }
-
   });
 
   scrim.addEventListener("click", closeNav);
 
-  links.querySelectorAll(".nav-link").forEach(link => {
-
-    link.addEventListener("click", closeNav);
-
+  links.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeNav();
+    });
   });
 
-  window.addEventListener("keydown", event => {
-
+  document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeNav();
     }
-
   });
 
   window.addEventListener("resize", () => {
-
     if (window.innerWidth > 860) {
       closeNav();
     }
+  });
+}
+
+
+// ------------------------------------------------------------
+// Smooth scrolling
+// Works reliably on desktop and mobile
+// ------------------------------------------------------------
+
+function initSmoothScroll() {
+
+  document.addEventListener("click", (event) => {
+
+    const anchor = event.target.closest('a[href^="#"]');
+
+    if (!anchor) return;
+
+    const href = anchor.getAttribute("href");
+
+    if (!href || href === "#") return;
+
+    const target = document.querySelector(href);
+
+    if (!target) return;
+
+    event.preventDefault();
+
+    // Close mobile navigation if it is open
+    const toggle = document.getElementById("nav-toggle");
+    const links = document.getElementById("nav-links");
+    const scrim = document.getElementById("nav-scrim");
+
+    if (toggle && links && scrim) {
+      toggle.setAttribute("aria-expanded", "false");
+      links.classList.remove("is-open");
+      scrim.classList.remove("is-open");
+      document.body.classList.remove("nav-open");
+    }
+
+    // Allow the mobile menu to finish closing
+    setTimeout(() => {
+
+      const nav = document.getElementById("site-nav");
+
+      const navHeight = nav
+        ? nav.getBoundingClientRect().height
+        : 0;
+
+      const targetPosition =
+        target.getBoundingClientRect().top +
+        window.pageYOffset -
+        navHeight -
+        20;
+
+      window.scrollTo({
+        top: Math.max(0, targetPosition),
+        behavior: "smooth"
+      });
+
+      // Update browser URL without jumping
+      if (history.pushState) {
+        history.pushState(null, "", href);
+      }
+
+    }, 50);
 
   });
 
 }
 
 
-/* SCROLL REVEAL */
+// ------------------------------------------------------------
+// Scroll reveal animations
+// ------------------------------------------------------------
 
 function initScrollReveal() {
 
-  const elements =
+  const revealEls =
     document.querySelectorAll(".reveal");
 
-  if (!elements.length) return;
+  if (!revealEls.length) return;
 
   if (!("IntersectionObserver" in window)) {
 
-    elements.forEach(element => {
-      element.classList.add("is-visible");
+    revealEls.forEach((el) => {
+      el.classList.add("is-visible");
     });
 
     return;
@@ -100,13 +163,15 @@ function initScrollReveal() {
 
   const observer =
     new IntersectionObserver(
-      entries => {
+      (entries) => {
 
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
 
           if (entry.isIntersecting) {
 
-            entry.target.classList.add("is-visible");
+            entry.target.classList.add(
+              "is-visible"
+            );
 
             observer.unobserve(entry.target);
 
@@ -117,103 +182,79 @@ function initScrollReveal() {
       },
       {
         threshold: 0.12,
-        rootMargin: "0px 0px -35px 0px"
+        rootMargin: "0px 0px -40px 0px"
       }
     );
 
-  elements.forEach(element => {
-    observer.observe(element);
+  revealEls.forEach((el) => {
+    observer.observe(el);
   });
-
 }
 
 
-/* ACTIVE NAVIGATION */
+// ------------------------------------------------------------
+// Active navigation section
+// ------------------------------------------------------------
 
-function initActiveNav() {
+function initActiveNavLink() {
 
   const sections =
-    document.querySelectorAll("main section[id]");
+    document.querySelectorAll(
+      "main .section[id]"
+    );
 
   const navLinks =
-    document.querySelectorAll(".nav-link");
+    document.querySelectorAll(
+      ".nav-link"
+    );
 
   if (!sections.length || !navLinks.length) {
     return;
   }
 
+  const linkFor = (id) => {
+    return document.querySelector(
+      `.nav-link[data-section="${id}"]`
+    );
+  };
+
   const observer =
     new IntersectionObserver(
-      entries => {
+      (entries) => {
 
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
 
           if (!entry.isIntersecting) return;
 
-          navLinks.forEach(link => {
+          const link =
+            linkFor(entry.target.id);
 
-            link.classList.toggle(
-              "active",
-              link.dataset.section === entry.target.id
-            );
+          if (!link) return;
 
+          navLinks.forEach((item) => {
+            item.classList.remove("active");
           });
+
+          link.classList.add("active");
 
         });
 
       },
       {
-        rootMargin: "-42% 0px -48% 0px",
+        rootMargin: "-35% 0px -55% 0px",
         threshold: 0
       }
     );
 
-  sections.forEach(section => {
+  sections.forEach((section) => {
     observer.observe(section);
   });
-
 }
 
 
-/* SMOOTH SCROLL */
-
-function initSmoothScroll() {
-
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(anchor => {
-
-      anchor.addEventListener("click", event => {
-
-        const id =
-          anchor.getAttribute("href");
-
-        if (!id || id === "#") {
-          return;
-        }
-
-        const target =
-          document.querySelector(id);
-
-        if (!target) {
-          return;
-        }
-
-        event.preventDefault();
-
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      });
-
-    });
-
-}
-
-
-/* CONTACT FORM */
+// ------------------------------------------------------------
+// Contact form
+// ------------------------------------------------------------
 
 function initContactForm() {
 
@@ -225,7 +266,7 @@ function initContactForm() {
 
   if (!form) return;
 
-  form.addEventListener("submit", event => {
+  form.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
@@ -242,7 +283,7 @@ function initContactForm() {
 
       if (note) {
         note.textContent =
-          "Please fill in every field before sending.";
+          "Please fill in every field.";
       }
 
       return;
@@ -255,32 +296,69 @@ function initContactForm() {
 
     const body =
       encodeURIComponent(
-        `${message}\n\nFrom: ${name} (${email})`
+        `${message}\n\n${name} (${email})`
       );
 
-    window.location.href =
+    const mailto =
       `mailto:afraim@myyahoo.com?subject=${subject}&body=${body}`;
 
     if (note) {
       note.textContent =
-        "Opening your email client...";
+        "Make Connections";
     }
 
-  });
+    window.location.href = mailto;
 
+  });
 }
 
-
-/* FOOTER YEAR */
+// ------------------------------------------------------------
+// Footer year
+// ------------------------------------------------------------
 
 function initFooterYear() {
 
   const year =
     document.getElementById("footer-year");
 
-  if (year) {
-    year.textContent =
-      new Date().getFullYear();
+  if (!year) return;
+
+  year.textContent =
+    new Date().getFullYear();
+}
+
+/* Mobile navigation stability */
+
+body.nav-open {
+  overflow: hidden;
+}
+
+@media (max-width: 860px) {
+
+  .nav-scrim {
+    pointer-events: none;
   }
 
+  .nav-scrim.is-open {
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    z-index: 1001;
+  }
+
+  .nav-scrim {
+    z-index: 1000;
+  }
+
+  .hero-actions {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-actions a {
+    position: relative;
+    z-index: 3;
+    touch-action: manipulation;
+  }
 }
