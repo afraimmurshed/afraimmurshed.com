@@ -3,361 +3,819 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afraim Murshed | Technology & Digital Portfolio</title>
-  <meta name="description" content="Afraim Murshed — Computer Science & Engineering student focused on cybersecurity, web development, quality assurance, and digital systems.">
-  <meta name="author" content="Afraim Murshed">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Afraim Murshed | Technology & Digital Portfolio">
-  <meta property="og:description" content="Computer Science & Engineering student focused on cybersecurity, web development, quality assurance, and digital systems.">
+  <meta name="description" content="Afraim Murshed's personal portfolio covering technology, cybersecurity, quality assurance, web development, and supply chain management.">
+  <meta name="author" content="Afraim Murshed">
+  <meta name="theme-color" content="#0b0c0e">
+
+  <meta property="og:title" content="Afraim Murshed | Portfolio">
+  <meta property="og:description" content="Technology, business, cybersecurity, quality assurance, and supply chain.">
   <meta property="og:type" content="website">
 
-  <!-- Favicon: "AM" monogram -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c0e'/%3E%3Ctext x='32' y='41' font-family='Georgia, serif' font-size='26' fill='%23c9a227' text-anchor='middle'%3EAM%3C/text%3E%3C/svg%3E">
+  <title>Afraim Murshed | Portfolio</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c0e'/%3E%3Ctext x='32' y='41' font-family='Arial' font-size='24' fill='%23c9a227' text-anchor='middle'%3EAM%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ NAVIGATION ============ -->
+  <!-- NAVIGATION -->
   <header class="site-nav" id="site-nav">
+
     <div class="nav-top">
-      <a href="#hero" class="logo" aria-label="Afraim Murshed, home">
-        <span class="logo-mark">&lt;AM/&gt;</span>
+      <a href="#home" class="logo" aria-label="Afraim Murshed home">
+        &lt;AM/&gt;
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
-        <span></span><span></span><span></span>
+
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
 
-    <nav class="nav-links" id="nav-links" aria-label="Primary">
+    <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+
       <ul>
-        <li><a href="#hero" class="nav-link" data-section="hero"><span class="nav-index">01</span>Home</a></li>
-        <li><a href="#about" class="nav-link" data-section="about"><span class="nav-index">02</span>About</a></li>
-        <li><a href="#skills" class="nav-link" data-section="skills"><span class="nav-index">03</span>Skills</a></li>
-        <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-index">04</span>Projects</a></li>
-        <li><a href="#experience" class="nav-link" data-section="experience"><span class="nav-index">05</span>Experience</a></li>
-        <li><a href="#education" class="nav-link" data-section="education"><span class="nav-index">06</span>Education</a></li>
-        <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-index">07</span>Contact</a></li>
+        <li>
+          <a href="#home" class="nav-link active" data-section="home">
+            <span>01</span>Home
+          </a>
+        </li>
+
+        <li>
+          <a href="#about" class="nav-link" data-section="about">
+            <span>02</span>About
+          </a>
+        </li>
+
+        <li>
+          <a href="#skills" class="nav-link" data-section="skills">
+            <span>03</span>Skills
+          </a>
+        </li>
+
+        <li>
+          <a href="#projects" class="nav-link" data-section="projects">
+            <span>04</span>Projects
+          </a>
+        </li>
+
+        <li>
+          <a href="#experience" class="nav-link" data-section="experience">
+            <span>05</span>Experience
+          </a>
+        </li>
+
+        <li>
+          <a href="#education" class="nav-link" data-section="education">
+            <span>06</span>Education
+          </a>
+        </li>
+
+        <li>
+          <a href="#contact" class="nav-link" data-section="contact">
+            <span>07</span>Contact
+          </a>
+        </li>
       </ul>
 
       <div class="nav-footer">
+
         <div class="status-pill">
-          <span class="status-dot" aria-hidden="true"></span>
+          <span class="status-dot"></span>
           Open to opportunities
         </div>
+
         <div class="nav-socials">
-          <!-- TODO: Replace # with your GitHub URL -->
-          <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="GitHub profile (add URL)">GitHub</a>
-          <!-- TODO: Replace # with your LinkedIn URL -->
-          <a href="#" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn profile (add URL)">LinkedIn</a>
+          <a
+            href="https://github.com/afraimmurshed"
+            class="social-link"
+            target="_blank"
+            rel="noopener">
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/"
+            class="social-link"
+            target="_blank"
+            rel="noopener">
+            LinkedIn
+          </a>
         </div>
+
       </div>
+
     </nav>
+
   </header>
 
   <div class="nav-scrim" id="nav-scrim"></div>
 
-  <!-- ============ MAIN ============ -->
   <main id="main">
 
     <!-- HERO -->
-    <section id="hero" class="section hero" aria-label="Introduction">
+    <section id="home" class="section hero">
+
       <div class="hero-grid" aria-hidden="true"></div>
+
       <div class="hero-content reveal">
-        <p class="eyebrow mono">// whoami</p>
-        <h1 class="hero-name">Afraim<br>Murshed</h1>
-        <p class="hero-headline">Studying systems. Building software.<br>Testing everything before it ships.</p>
-        <p class="hero-intro">Computer Science & Engineering student with hands-on QA and software testing training, focused on cybersecurity, web development, and the digital systems businesses run on. I care about how technology is built &mdash; and about proving it actually works.</p>
+
+        <p class="eyebrow mono">// hello, world</p>
+
+        <h1 class="hero-name">
+          Afraim<br>
+          Murshed
+        </h1>
+
+        <p class="hero-headline">
+          Technology, business, and systems.<br>
+          Learning. Building. Improving.
+        </p>
+
+        <p class="hero-intro">
+          I'm a student with a background in cybersecurity and technology,
+          currently studying Supply Chain Management at the University of
+          Michigan-Dearborn. I enjoy practical projects, problem solving,
+          and understanding how technology supports modern business.
+        </p>
+
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+          <a href="#projects" class="btn btn-primary">
+            View My Work
+          </a>
+
+          <a href="#contact" class="btn btn-ghost">
+            Get In Touch
+          </a>
         </div>
-        <p class="hero-status mono" id="hero-status">$ status: <span class="type-target">available for opportunities</span><span class="cursor" aria-hidden="true">&#9608;</span></p>
+
+        <p class="hero-status mono">
+          $ status:
+          <span>available for opportunities</span>
+          <b aria-hidden="true">█</b>
+        </p>
+
       </div>
-      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
-        <span class="scroll-cue-line"></span>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About">
+        <span></span>
         Scroll
       </a>
+
     </section>
+
 
     <!-- ABOUT -->
     <section id="about" class="section" aria-labelledby="about-heading">
+
       <div class="section-inner">
+
         <p class="eyebrow mono">// about</p>
+
         <h2 id="about-heading">About</h2>
+
         <div class="about-grid">
+
           <div class="about-copy reveal">
-            <p>I'm Afraim Murshed, a Computer Science &amp; Engineering student and technology-focused professional interested in how software is built, secured, and verified to actually do what it promises.</p>
-            <p>My path into tech started on the ground floor &mdash; working as a Fulfillment Associate at Amazon, where I saw first-hand how large-scale, technology-driven systems keep a business running. That experience sharpened my interest in the layer underneath the process: the software, the infrastructure, and the checks that keep it reliable.</p>
-            <p>Through QA and software testing training with TripleTen, I've been building a rigorous, detail-oriented approach to verifying that systems behave the way they're meant to. I'm continuing my technical foundation through Computer Science &amp; Engineering coursework, with a growing focus on cybersecurity and web development.</p>
-            <p>I'm drawn to the intersection of technology and reliability: building things that work, and then proving that they do.</p>
+
+            <p>
+              I'm Afraim Murshed, a student interested in technology,
+              business, and the systems that connect them. My background
+              includes cybersecurity, web development, quality assurance,
+              and hands-on experience in a technology-driven operations
+              environment.
+            </p>
+
+            <p>
+              I'm currently studying Supply Chain Management at the
+              University of Michigan-Dearborn. This adds a business and
+              operations perspective to my technical foundation and helps
+              me understand how technology can improve real-world processes.
+            </p>
+
+            <p>
+              I enjoy learning new tools, building practical projects,
+              testing systems, and developing skills that make technology
+              more useful and reliable.
+            </p>
+
           </div>
-          <aside class="about-facts reveal" aria-label="Quick facts">
+
+          <aside class="about-facts reveal">
+
             <div class="fact">
               <span class="fact-label mono">Focus</span>
-              <span class="fact-value">Cybersecurity &middot; Web Development &middot; QA</span>
+              <span class="fact-value">
+                Technology · Cybersecurity · QA · Supply Chain
+              </span>
             </div>
+
             <div class="fact">
               <span class="fact-label mono">Currently</span>
-              <span class="fact-value">Computer Science &amp; Engineering studies</span>
+              <span class="fact-value">
+                BBA, Supply Chain Management
+              </span>
             </div>
+
             <div class="fact">
-              <span class="fact-label mono">Background</span>
-              <span class="fact-value">Amazon Fulfillment &middot; TripleTen QA Training</span>
+              <span class="fact-label mono">Technical</span>
+              <span class="fact-value">
+                Web Development · Networking · Security Fundamentals
+              </span>
             </div>
+
             <div class="fact">
-              <span class="fact-label mono">Based in</span>
-              <span class="fact-value">[Add Location]</span>
+              <span class="fact-label mono">Approach</span>
+              <span class="fact-value">
+                Curious · Practical · Detail-oriented
+              </span>
             </div>
+
           </aside>
+
         </div>
+
       </div>
+
     </section>
+
 
     <!-- SKILLS -->
     <section id="skills" class="section" aria-labelledby="skills-heading">
+
       <div class="section-inner">
+
         <p class="eyebrow mono">// skills</p>
-        <h2 id="skills-heading">Skills &amp; Interests</h2>
+
+        <h2 id="skills-heading">
+          Skills &amp; Interests
+        </h2>
+
         <div class="skills-grid">
 
-          <div class="skill-card reveal">
+          <article class="skill-card reveal">
             <h3>Technology</h3>
             <ul>
               <li>Information Technology</li>
               <li>Digital Systems</li>
-              <li>Technology</li>
+              <li>Windows</li>
+              <li>Technical Troubleshooting</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="skill-card reveal">
+          <article class="skill-card reveal">
             <h3>Cybersecurity</h3>
             <ul>
-              <li>Cybersecurity</li>
               <li>Security Fundamentals</li>
+              <li>Networking</li>
+              <li>Systems</li>
+              <li>Cybersecurity Concepts</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="skill-card reveal">
+          <article class="skill-card reveal">
             <h3>Web Development</h3>
             <ul>
-              <li>Web Development</li>
-              <li>Web Projects</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript Fundamentals</li>
+              <li>Responsive Web Design</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="skill-card reveal">
-            <h3>Software &amp; QA</h3>
+          <article class="skill-card reveal">
+            <h3>Quality Assurance</h3>
             <ul>
-              <li>Quality Assurance</li>
               <li>Software Testing</li>
+              <li>Defect Identification</li>
+              <li>Test Concepts</li>
+              <li>Detail-oriented Analysis</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="skill-card reveal">
+          <article class="skill-card reveal">
             <h3>Business &amp; Supply Chain</h3>
             <ul>
-              <li>Supply Chain Technology</li>
+              <li>Supply Chain Management</li>
+              <li>Operations</li>
+              <li>Process Improvement</li>
               <li>Business Technology</li>
             </ul>
-          </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Professional</h3>
+            <ul>
+              <li>Problem Solving</li>
+              <li>Communication</li>
+              <li>Teamwork</li>
+              <li>Continuous Learning</li>
+            </ul>
+          </article>
 
         </div>
+
       </div>
+
     </section>
+
 
     <!-- PROJECTS -->
     <section id="projects" class="section" aria-labelledby="projects-heading">
+
       <div class="section-inner">
+
         <p class="eyebrow mono">// projects</p>
+
         <h2 id="projects-heading">Projects</h2>
 
         <article class="project-featured reveal">
-          <div class="project-featured-media" aria-hidden="true">
-            <span class="project-featured-tag mono">Featured</span>
-          </div>
-          <div class="project-featured-body">
-            <p class="project-category mono">Web Development</p>
-            <h3>Discover Sylhet, Bangladesh</h3>
-            <p>A web project focused on showcasing Sylhet, Bangladesh.</p>
-            <ul class="tech-tags" aria-label="Technologies used">
-              <li>[Add Technologies]</li>
-            </ul>
-            <div class="project-actions">
-              <!-- TODO: Replace # with live project URL -->
-              <a href="#" class="btn btn-small btn-primary">View Project</a>
-              <!-- TODO: Replace # with GitHub repo URL -->
-              <a href="#" class="btn btn-small btn-ghost">GitHub</a>
+
+          <div class="project-featured-media">
+
+            <span class="project-featured-tag mono">
+              Featured Project
+            </span>
+
+            <div class="project-code mono">
+              &lt;discover<br>
+              &nbsp;&nbsp;sylhet /&gt;
             </div>
+
           </div>
+
+          <div class="project-featured-body">
+
+            <p class="project-category mono">
+              Web Development
+            </p>
+
+            <h3>
+              Discover Sylhet, Bangladesh
+            </h3>
+
+            <p>
+              A web project created to showcase Sylhet, Bangladesh
+              through an informative and engaging digital experience.
+            </p>
+
+            <ul class="tech-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Web Design</li>
+            </ul>
+
+          </div>
+
         </article>
+
 
         <div class="projects-grid">
 
           <article class="project-card reveal">
-            <p class="project-category mono">Web Development</p>
-            <h3>[Project Title]</h3>
-            <p>[Add a short description of this project.]</p>
-            <ul class="tech-tags"><li>[Add Tech]</li></ul>
-            <div class="project-actions">
-              <a href="#" class="btn btn-small btn-ghost">View Project</a>
-              <a href="#" class="btn btn-small btn-ghost">GitHub</a>
-            </div>
+
+            <p class="project-category mono">
+              Quality Assurance
+            </p>
+
+            <h3>Software Testing</h3>
+
+            <p>
+              Training and project work focused on testing concepts,
+              defect identification, and structured quality assurance
+              practices.
+            </p>
+
+            <ul class="tech-tags">
+              <li>QA</li>
+              <li>Testing</li>
+              <li>Analysis</li>
+            </ul>
+
           </article>
 
-          <article class="project-card reveal">
-            <p class="project-category mono">Cybersecurity</p>
-            <h3>[Project Title]</h3>
-            <p>[Add a short description of this project.]</p>
-            <ul class="tech-tags"><li>[Add Tech]</li></ul>
-            <div class="project-actions">
-              <a href="#" class="btn btn-small btn-ghost">View Project</a>
-              <a href="#" class="btn btn-small btn-ghost">GitHub</a>
-            </div>
-          </article>
 
           <article class="project-card reveal">
-            <p class="project-category mono">Software / QA</p>
-            <h3>[Project Title]</h3>
-            <p>[Add a short description of this project.]</p>
-            <ul class="tech-tags"><li>[Add Tech]</li></ul>
-            <div class="project-actions">
-              <a href="#" class="btn btn-small btn-ghost">View Project</a>
-              <a href="#" class="btn btn-small btn-ghost">GitHub</a>
-            </div>
+
+            <p class="project-category mono">
+              Cybersecurity
+            </p>
+
+            <h3>Security Foundations</h3>
+
+            <p>
+              Academic work and learning focused on cybersecurity
+              concepts, networking, systems, and information security.
+            </p>
+
+            <ul class="tech-tags">
+              <li>Security</li>
+              <li>Networking</li>
+              <li>Systems</li>
+            </ul>
+
           </article>
 
+
           <article class="project-card reveal">
-            <p class="project-category mono">Technology</p>
-            <h3>[Project Title]</h3>
-            <p>[Add a short description of this project.]</p>
-            <ul class="tech-tags"><li>[Add Tech]</li></ul>
-            <div class="project-actions">
-              <a href="#" class="btn btn-small btn-ghost">View Project</a>
-              <a href="#" class="btn btn-small btn-ghost">GitHub</a>
-            </div>
+
+            <p class="project-category mono">
+              Technology
+            </p>
+
+            <h3>Personal Portfolio</h3>
+
+            <p>
+              A responsive personal website designed and developed
+              to present my background, skills, projects, and interests.
+            </p>
+
+            <ul class="tech-tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+
           </article>
 
         </div>
+
       </div>
+
     </section>
+
 
     <!-- EXPERIENCE -->
     <section id="experience" class="section" aria-labelledby="experience-heading">
+
       <div class="section-inner">
+
         <p class="eyebrow mono">// experience</p>
-        <h2 id="experience-heading">Experience</h2>
+
+        <h2 id="experience-heading">
+          Experience
+        </h2>
 
         <ol class="timeline">
-          <li class="timeline-item reveal">
-            <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-body">
-              <p class="timeline-date mono">[Start Date] &ndash; [End Date]</p>
-              <h3>Fulfillment Associate</h3>
-              <p class="timeline-org">Amazon</p>
-              <p>[Add a short description of your role and responsibilities.]</p>
-            </div>
-          </li>
 
           <li class="timeline-item reveal">
-            <div class="timeline-marker" aria-hidden="true"></div>
+
+            <div class="timeline-marker"></div>
+
             <div class="timeline-body">
-              <p class="timeline-date mono">[Start Date] &ndash; [End Date]</p>
-              <h3>QA / Software Testing Training</h3>
-              <p class="timeline-org">TripleTen</p>
-              <p>Training in quality assurance and software testing fundamentals.</p>
+
+              <p class="timeline-date mono">
+                Professional Experience
+              </p>
+
+              <h3>
+                Fulfillment Associate
+              </h3>
+
+              <p class="timeline-org">
+                Amazon
+              </p>
+
+              <p>
+                Experience in a fast-paced fulfillment environment,
+                developing skills in accuracy, organization, time
+                management, teamwork, and operational processes.
+              </p>
+
             </div>
+
           </li>
+
+
+          <li class="timeline-item reveal">
+
+            <div class="timeline-marker"></div>
+
+            <div class="timeline-body">
+
+              <p class="timeline-date mono">
+                Professional Training
+              </p>
+
+              <h3>
+                QA / Software Testing Training
+              </h3>
+
+              <p class="timeline-org">
+                TripleTen
+              </p>
+
+              <p>
+                Developed knowledge of quality assurance and software
+                testing fundamentals through structured training and
+                practical work.
+              </p>
+
+            </div>
+
+          </li>
+
         </ol>
+
       </div>
+
     </section>
+
 
     <!-- EDUCATION -->
     <section id="education" class="section" aria-labelledby="education-heading">
+
       <div class="section-inner">
+
         <p class="eyebrow mono">// education</p>
-        <h2 id="education-heading">Education</h2>
+
+        <h2 id="education-heading">
+          Education
+        </h2>
 
         <div class="education-grid">
-          <div class="education-card reveal">
-            <p class="timeline-date mono">[Add Dates]</p>
-            <h3>Wayne County Community College District</h3>
-            <p>[Add Program / Degree]</p>
-          </div>
 
-          <div class="education-card reveal">
-            <p class="timeline-date mono">[Add Dates]</p>
-            <h3>Leading University</h3>
-            <p>Computer Science &amp; Engineering Studies</p>
-          </div>
+          <article class="education-card reveal">
+
+            <p class="timeline-date mono">
+              Current
+            </p>
+
+            <h3>
+              University of Michigan-Dearborn
+            </h3>
+
+            <p>
+              BBA in Supply Chain Management
+            </p>
+
+            <small>
+              Business operations, logistics, supply chain systems,
+              and technology.
+            </small>
+
+          </article>
+
+
+          <article class="education-card reveal">
+
+            <p class="timeline-date mono">
+              Completed
+            </p>
+
+            <h3>
+              Wayne County Community College District
+            </h3>
+
+            <p>
+              College Coursework
+            </p>
+
+            <small>
+              Built an academic foundation across technical and
+              business-related coursework.
+            </small>
+
+          </article>
+
+
+          <article class="education-card reveal">
+
+            <p class="timeline-date mono">
+              Completed
+            </p>
+
+            <h3>
+              Cybersecurity
+            </h3>
+
+            <p>
+              Associate of Applied Science
+            </p>
+
+            <small>
+              Foundation in cybersecurity, networking, systems,
+              and information security.
+            </small>
+
+          </article>
+
+
+          <article class="education-card reveal">
+
+            <p class="timeline-date mono">
+              Academic Studies
+            </p>
+
+            <h3>
+              Leading University
+            </h3>
+
+            <p>
+              Computer Science &amp; Engineering Studies
+            </p>
+
+            <small>
+              Computer science and engineering coursework with
+              a focus on technical foundations.
+            </small>
+
+          </article>
+
         </div>
+
       </div>
+
     </section>
+
 
     <!-- CONTACT -->
     <section id="contact" class="section" aria-labelledby="contact-heading">
+
       <div class="section-inner">
+
         <p class="eyebrow mono">// contact</p>
-        <h2 id="contact-heading">Get In Touch</h2>
+
+        <h2 id="contact-heading">
+          Get In Touch
+        </h2>
 
         <div class="contact-grid">
+
           <div class="contact-info reveal">
-            <p>Have a project, opportunity, or question? I'd like to hear from you.</p>
-            <a href="mailto:afraim@myyahoo.com" class="contact-email">afraim@myyahoo.com</a>
+
+            <p>
+              Have an opportunity, project, or question?
+              I'd like to hear from you.
+            </p>
+
+            <a
+              href="mailto:afraim@myyahoo.com"
+              class="contact-email">
+              afraim@myyahoo.com
+            </a>
+
             <div class="contact-socials">
-              <!-- TODO: Replace # with your GitHub URL -->
-              <a href="#" class="social-link" target="_blank" rel="noopener">GitHub &rarr;</a>
-              <!-- TODO: Replace # with your LinkedIn URL -->
-              <a href="#" class="social-link" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+
+              <a
+                href="https://github.com/afraimmurshed"
+                class="social-link"
+                target="_blank"
+                rel="noopener">
+                GitHub →
+              </a>
+
+              <a
+                href="https://www.linkedin.com/"
+                class="social-link"
+                target="_blank"
+                rel="noopener">
+                LinkedIn →
+              </a>
+
             </div>
+
           </div>
 
-          <form class="contact-form reveal" id="contact-form" novalidate>
+
+          <form
+            class="contact-form reveal"
+            id="contact-form">
+
             <div class="form-row">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required autocomplete="name">
+
+              <label for="name">
+                Name
+              </label>
+
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name">
+
             </div>
+
+
             <div class="form-row">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required autocomplete="email">
+
+              <label for="email">
+                Email
+              </label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email">
+
             </div>
+
+
             <div class="form-row">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+
+              <label for="message">
+                Message
+              </label>
+
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required></textarea>
+
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            <p class="form-note mono" id="form-note">Opens your email client &mdash; no data is stored or sent to a server.</p>
+
+
+            <button
+              type="submit"
+              class="btn btn-primary">
+              Send Message
+            </button>
+
+            <p
+              class="form-note mono"
+              id="form-note">
+              Opens your email client. No data is stored on this site.
+            </p>
+
           </form>
+
         </div>
+
       </div>
+
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
+
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <div class="footer-inner">
+
       <div>
-        <p class="footer-name">Afraim Murshed</p>
-        <a href="mailto:afraim@myyahoo.com" class="footer-email">afraim@myyahoo.com</a>
+        <p class="footer-name">
+          Afraim Murshed
+        </p>
+
+        <a
+          href="mailto:afraim@myyahoo.com"
+          class="footer-email">
+          afraim@myyahoo.com
+        </a>
       </div>
+
       <div class="footer-socials">
-        <!-- TODO: Replace # with your GitHub URL -->
-        <a href="#" class="social-link" target="_blank" rel="noopener">GitHub</a>
-        <!-- TODO: Replace # with your LinkedIn URL -->
-        <a href="#" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+
+        <a
+          href="https://github.com/afraimmurshed"
+          class="social-link"
+          target="_blank"
+          rel="noopener">
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/"
+          class="social-link"
+          target="_blank"
+          rel="noopener">
+          LinkedIn
+        </a>
+
       </div>
-      <p class="footer-copy">&copy; <span id="footer-year"></span> Afraim Murshed. All rights reserved.</p>
+
+      <p class="footer-copy">
+        © <span id="footer-year"></span>
+        Afraim Murshed. All rights reserved.
+      </p>
+
     </div>
+
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
