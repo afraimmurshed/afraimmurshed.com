@@ -2,16 +2,26 @@
 // Afraim Murshed | Portfolio
 // ============================================================
 
-document.addEventListener("DOMContentLoaded", () => {
 
-  initMobileNav();
-  initSmoothScroll();
-  initScrollReveal();
-  initActiveNavLink();
-  initContactForm();
-  initFooterYear();
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-});
+    initMobileNav();
+
+    initSmoothScroll();
+
+    initScrollReveal();
+
+    initActiveNavLink();
+
+    initContactForm();
+
+    initFooterYear();
+
+  }
+);
+
 
 
 // ============================================================
@@ -21,16 +31,28 @@ document.addEventListener("DOMContentLoaded", () => {
 function initMobileNav() {
 
   const toggle =
-    document.getElementById("nav-toggle");
+    document.getElementById(
+      "nav-toggle"
+    );
+
 
   const links =
-    document.getElementById("nav-links");
+    document.getElementById(
+      "nav-links"
+    );
+
 
   const scrim =
-    document.getElementById("nav-scrim");
+    document.getElementById(
+      "nav-scrim"
+    );
 
 
-  if (!toggle || !links || !scrim) {
+  if (
+    !toggle ||
+    !links ||
+    !scrim
+  ) {
     return;
   }
 
@@ -42,16 +64,26 @@ function initMobileNav() {
       "false"
     );
 
+
     toggle.setAttribute(
       "aria-label",
       "Open navigation"
     );
 
-    links.classList.remove("is-open");
 
-    scrim.classList.remove("is-open");
+    links.classList.remove(
+      "is-open"
+    );
 
-    document.body.classList.remove("nav-open");
+
+    scrim.classList.remove(
+      "is-open"
+    );
+
+
+    document.body.classList.remove(
+      "nav-open"
+    );
 
   }
 
@@ -63,37 +95,57 @@ function initMobileNav() {
       "true"
     );
 
+
     toggle.setAttribute(
       "aria-label",
       "Close navigation"
     );
 
-    links.classList.add("is-open");
 
-    scrim.classList.add("is-open");
+    links.classList.add(
+      "is-open"
+    );
 
-    document.body.classList.add("nav-open");
+
+    scrim.classList.add(
+      "is-open"
+    );
+
+
+    document.body.classList.add(
+      "nav-open"
+    );
 
   }
 
 
-  toggle.addEventListener("click", (event) => {
+  toggle.addEventListener(
+    "click",
+    (event) => {
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const isOpen =
-      toggle.getAttribute(
-        "aria-expanded"
-      ) === "true";
+      event.stopPropagation();
 
 
-    if (isOpen) {
-      closeNav();
-    } else {
-      openNav();
+      const isOpen =
+        toggle.getAttribute(
+          "aria-expanded"
+        ) === "true";
+
+
+      if (isOpen) {
+
+        closeNav();
+
+      } else {
+
+        openNav();
+
+      }
+
     }
-
-  });
+  );
 
 
   scrim.addEventListener(
@@ -118,8 +170,12 @@ function initMobileNav() {
     "keydown",
     (event) => {
 
-      if (event.key === "Escape") {
+      if (
+        event.key === "Escape"
+      ) {
+
         closeNav();
+
       }
 
     }
@@ -130,14 +186,19 @@ function initMobileNav() {
     "resize",
     () => {
 
-      if (window.innerWidth > 860) {
+      if (
+        window.innerWidth > 860
+      ) {
+
         closeNav();
+
       }
 
     }
   );
 
 }
+
 
 
 // ============================================================
@@ -162,7 +223,9 @@ function initSmoothScroll() {
 
 
       const href =
-        anchor.getAttribute("href");
+        anchor.getAttribute(
+          "href"
+        );
 
 
       if (
@@ -179,7 +242,9 @@ function initSmoothScroll() {
       try {
 
         target =
-          document.querySelector(href);
+          document.querySelector(
+            href
+          );
 
       } catch (error) {
 
@@ -196,108 +261,140 @@ function initSmoothScroll() {
       event.preventDefault();
 
 
-      const mobileMenu =
-        document.getElementById(
-          "nav-links"
-        );
+      closeMobileMenu();
 
 
-      const scrim =
-        document.getElementById(
-          "nav-scrim"
-        );
+      /*
+        Give the mobile menu a moment to
+        finish closing before scrolling.
+      */
+
+      setTimeout(
+        () => {
+
+          const isMobile =
+            window.innerWidth <= 860;
 
 
-      const toggle =
-        document.getElementById(
-          "nav-toggle"
-        );
+          const offset =
+            isMobile
+              ? 82
+              : 25;
 
 
-      if (mobileMenu) {
-        mobileMenu.classList.remove(
-          "is-open"
-        );
-      }
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            offset;
 
 
-      if (scrim) {
-        scrim.classList.remove(
-          "is-open"
-        );
-      }
+          window.scrollTo({
+
+            top:
+              Math.max(
+                0,
+                targetPosition
+              ),
+
+            behavior:
+              "smooth"
+
+          });
 
 
-      if (toggle) {
+          /*
+            Update URL without allowing
+            the browser to jump.
+          */
 
-        toggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+          if (
+            window.history &&
+            window.history.pushState
+          ) {
 
-        toggle.setAttribute(
-          "aria-label",
-          "Open navigation"
-        );
+            window.history.pushState(
+              null,
+              "",
+              href
+            );
 
-      }
+          }
 
-
-      document.body.classList.remove(
-        "nav-open"
+        },
+        70
       );
-
-
-      setTimeout(() => {
-
-        /*
-          Mobile needs more space because
-          the fixed navigation is 68px high.
-        */
-
-        const offset =
-          window.innerWidth <= 860
-            ? 82
-            : 25;
-
-
-        const position =
-          target.getBoundingClientRect().top +
-          window.pageYOffset -
-          offset;
-
-
-        window.scrollTo({
-
-          top: Math.max(
-            0,
-            position
-          ),
-
-          behavior: "smooth"
-
-        });
-
-
-        if (
-          window.history &&
-          window.history.pushState
-        ) {
-
-          window.history.pushState(
-            null,
-            "",
-            href
-          );
-
-        }
-
-      }, 60);
 
     }
   );
 
 }
+
+
+
+// ============================================================
+// CLOSE MOBILE MENU
+// ============================================================
+
+function closeMobileMenu() {
+
+  const toggle =
+    document.getElementById(
+      "nav-toggle"
+    );
+
+
+  const links =
+    document.getElementById(
+      "nav-links"
+    );
+
+
+  const scrim =
+    document.getElementById(
+      "nav-scrim"
+    );
+
+
+  if (toggle) {
+
+    toggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+
+    toggle.setAttribute(
+      "aria-label",
+      "Open navigation"
+    );
+
+  }
+
+
+  if (links) {
+
+    links.classList.remove(
+      "is-open"
+    );
+
+  }
+
+
+  if (scrim) {
+
+    scrim.classList.remove(
+      "is-open"
+    );
+
+  }
+
+
+  document.body.classList.remove(
+    "nav-open"
+  );
+
+}
+
 
 
 // ============================================================
@@ -339,7 +436,10 @@ function initScrollReveal() {
 
 
   if (
-    !("IntersectionObserver" in window)
+    !(
+      "IntersectionObserver"
+      in window
+    )
   ) {
 
     elements.forEach(
@@ -372,6 +472,7 @@ function initScrollReveal() {
                 "is-visible"
               );
 
+
               observer.unobserve(
                 entry.target
               );
@@ -383,10 +484,12 @@ function initScrollReveal() {
 
       },
       {
-        threshold: 0.1,
+
+        threshold: 0.08,
 
         rootMargin:
-          "0px 0px -35px 0px"
+          "0px 0px -30px 0px"
+
       }
     );
 
@@ -394,12 +497,15 @@ function initScrollReveal() {
   elements.forEach(
     (element) => {
 
-      observer.observe(element);
+      observer.observe(
+        element
+      );
 
     }
   );
 
 }
+
 
 
 // ============================================================
@@ -424,14 +530,21 @@ function initActiveNavLink() {
     !sections.length ||
     !links.length
   ) {
+
     return;
+
   }
 
 
   if (
-    !("IntersectionObserver" in window)
+    !(
+      "IntersectionObserver"
+      in window
+    )
   ) {
+
     return;
+
   }
 
 
@@ -445,7 +558,9 @@ function initActiveNavLink() {
             if (
               !entry.isIntersecting
             ) {
+
               return;
+
             }
 
 
@@ -480,10 +595,12 @@ function initActiveNavLink() {
 
       },
       {
+
         rootMargin:
           "-35% 0px -55% 0px",
 
         threshold: 0
+
       }
     );
 
@@ -491,12 +608,15 @@ function initActiveNavLink() {
   sections.forEach(
     (section) => {
 
-      observer.observe(section);
+      observer.observe(
+        section
+      );
 
     }
   );
 
 }
+
 
 
 // ============================================================
@@ -583,6 +703,11 @@ function initContactForm() {
       }
 
 
+      /*
+        mailto opens the visitor's
+        configured email application.
+      */
+
       window.location.href =
         mailto;
 
@@ -590,6 +715,7 @@ function initContactForm() {
   );
 
 }
+
 
 
 // ============================================================
