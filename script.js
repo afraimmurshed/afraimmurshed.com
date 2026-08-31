@@ -2,19 +2,13 @@
 // Afraim Murshed | Portfolio
 // ============================================================
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
   initMobileNav();
-
   initSmoothScroll();
-
   initScrollReveal();
-
   initActiveNavLink();
-
   initContactForm();
-
   initFooterYear();
 
 });
@@ -57,9 +51,7 @@ function initMobileNav() {
 
     scrim.classList.remove("is-open");
 
-    document.body.classList.remove(
-      "nav-open"
-    );
+    document.body.classList.remove("nav-open");
 
   }
 
@@ -80,33 +72,28 @@ function initMobileNav() {
 
     scrim.classList.add("is-open");
 
-    document.body.classList.add(
-      "nav-open"
-    );
+    document.body.classList.add("nav-open");
 
   }
 
 
-  toggle.addEventListener(
-    "click",
-    (event) => {
+  toggle.addEventListener("click", (event) => {
 
-      event.preventDefault();
+    event.preventDefault();
 
-      const isOpen =
-        toggle.getAttribute(
-          "aria-expanded"
-        ) === "true";
+    const isOpen =
+      toggle.getAttribute(
+        "aria-expanded"
+      ) === "true";
 
 
-      if (isOpen) {
-        closeNav();
-      } else {
-        openNav();
-      }
-
+    if (isOpen) {
+      closeNav();
+    } else {
+      openNav();
     }
-  );
+
+  });
 
 
   scrim.addEventListener(
@@ -209,12 +196,6 @@ function initSmoothScroll() {
       event.preventDefault();
 
 
-      const nav =
-        document.getElementById(
-          "site-nav"
-        );
-
-
       const mobileMenu =
         document.getElementById(
           "nav-links"
@@ -224,6 +205,12 @@ function initSmoothScroll() {
       const scrim =
         document.getElementById(
           "nav-scrim"
+        );
+
+
+      const toggle =
+        document.getElementById(
+          "nav-toggle"
         );
 
 
@@ -241,27 +228,17 @@ function initSmoothScroll() {
       }
 
 
-      if (nav) {
+      if (toggle) {
 
-        const toggle =
-          document.getElementById(
-            "nav-toggle"
-          );
+        toggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-
-        if (toggle) {
-
-          toggle.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-          toggle.setAttribute(
-            "aria-label",
-            "Open navigation"
-          );
-
-        }
+        toggle.setAttribute(
+          "aria-label",
+          "Open navigation"
+        );
 
       }
 
@@ -273,16 +250,15 @@ function initSmoothScroll() {
 
       setTimeout(() => {
 
-        const isMobile =
-          window.innerWidth <= 860;
+        /*
+          Mobile needs more space because
+          the fixed navigation is 68px high.
+        */
 
-
-        let offset = 25;
-
-
-        if (isMobile) {
-          offset = 80;
-        }
+        const offset =
+          window.innerWidth <= 860
+            ? 82
+            : 25;
 
 
         const position =
@@ -316,7 +292,7 @@ function initSmoothScroll() {
 
         }
 
-      }, 50);
+      }, 60);
 
     }
   );
@@ -349,9 +325,11 @@ function initScrollReveal() {
 
     elements.forEach(
       (element) => {
+
         element.classList.add(
           "is-visible"
         );
+
       }
     );
 
@@ -366,9 +344,11 @@ function initScrollReveal() {
 
     elements.forEach(
       (element) => {
+
         element.classList.add(
           "is-visible"
         );
+
       }
     );
 
@@ -413,7 +393,9 @@ function initScrollReveal() {
 
   elements.forEach(
     (element) => {
+
       observer.observe(element);
+
     }
   );
 
